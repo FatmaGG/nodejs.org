@@ -4,11 +4,6 @@ pipeline {
     DOCKERHUB_CREDENTIALS = credentials('docker') // the credentials for Docker Hub login
   }
   stages {
-    stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
     stage('Install dependeincies') {
       agent {
         docker {image 'node:18'}
