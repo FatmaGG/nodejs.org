@@ -9,31 +9,17 @@ pipeline {
                 checkout scm
             }
         }
-    stage('Install dependeincies') {
-      agent {
-        docker {image 'node:18'}
-      }
-      steps {
-        sh 'npm cache verify'
-        sh 'npm install'
-      }
-    }
-    stage('Unit Tests') {
-      agent {
-        docker {image 'node:18'}
-      }
-      steps {
-        sh 'npm test' // run the unit tests
-      }
-    }
-    stage('Build') {
-      agent {
-        docker {image 'node:18'}
-      }
-      steps {
-        sh 'npm run build' // run the build script
-      }
-    }
+    stage('Build and Test') {
+  agent {
+    docker {image 'node:18'}
+  }
+  steps {
+    sh 'npm cache verify'
+    sh 'npm install'
+    sh 'npm test'
+    sh 'npm run build'
+  }
+}
   }
 }
 
