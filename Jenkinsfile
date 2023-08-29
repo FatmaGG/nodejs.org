@@ -23,7 +23,7 @@ pipeline {
         docker {image 'node:18'}
       }
       steps {
-        sh 'npm test' // run the unit tests
+        sh 'npm run test' // run the unit tests
       }
     }
     stage('Build') {
