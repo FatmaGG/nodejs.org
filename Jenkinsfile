@@ -1,5 +1,5 @@
 pipeline {
-  agent any // use any available agent
+  agent {label 'master'} // use any available agent
   environment {
     DOCKERHUB_CREDENTIALS = credentials('docker') // the credentials for Docker Hub login
   }
