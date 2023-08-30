@@ -24,3 +24,13 @@ jobs:
       - name: Build application
         run: |
           docker run --rm -v $PWD:/app -w /app node:18 npm run build
+
+      - name: Build Dockerfile
+        run: docker build . -t fatmagamal/devopstask:latest
+
+      - name: Log in to Docker Hub
+        run: |
+          docker login -u fatmagamal -p ${{ secrets.DOCKERHUB_CREDENTIALS }}
+
+      - name: Push to Docker Hub
+        run: docker push fatmagamal/devopstask:latest
