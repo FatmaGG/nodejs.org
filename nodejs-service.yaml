@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodejs-service
+  namespace: development # change this to production if needed
+spec:
+  selector:
+    app: nodejs-app
+  ports:
+  - protocol: TCP
+    port: 80 # change this to the port you want to expose
+    targetPort: 3000 # change this to the port your app listens on
+  type: NodePort # change this to the type of service you want, such as ClusterIP or LoadBalancer
